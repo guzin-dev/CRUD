@@ -1,3 +1,3 @@
 # CRUD
 
-Crud de pessoas criado com java
+Criando um CRUD de pessoas utilizando Java
