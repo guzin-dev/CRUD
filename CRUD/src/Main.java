@@ -21,7 +21,7 @@ public class Main {
                 vPessoas();
                 break;
             case 3:
-                //ePessoa();
+                ePessoa();
                 break;
             case 4:
                 //dPessoa();
@@ -63,10 +63,25 @@ public class Main {
     }
 
     public static void ePessoa(){
+        String pessoas = "";
+        boolean encontrou = false;
         if(listaDePessoas.isEmpty()){
             JOptionPane.showMessageDialog(null, "Não existem pessoas!");
         }else {
-            int id = Integer.parseInt(JOptionPane.showInputDialog("Insira o id da pessoa que você deseja editar"));
+            int idParaPesquisa = Integer.parseInt(JOptionPane.showInputDialog("Insira o id da pessoa que você deseja editar"));
+            for (int i = 0; i < listaDePessoas.size(); i++) {
+                if(listaDePessoas.get(i).getId() == idParaPesquisa){
+                    String novoNome = JOptionPane.showInputDialog("Nome atual da pessoa: " + listaDePessoas.get(i).getNome() + "\nInsira o novo nome para este usuário");
+                    int novaIdade = Integer.parseInt(JOptionPane.showInputDialog("Idade atual da pessoa: " + listaDePessoas.get(i).getIdade() + "\nInsira a nova idade para este usuário"));
+                    listaDePessoas.get(i).setNome(novoNome);
+                    listaDePessoas.get(i).setIdade(novaIdade);
+                    JOptionPane.showMessageDialog(null, "Pessoa editada com sucesso!");
+                    encontrou = true;
+                }
+            }
+        }
+        if(encontrou == false){
+            JOptionPane.showMessageDialog(null, "Nenhuma pessoa encontrada com esse id");
         }
         menu();
     }
